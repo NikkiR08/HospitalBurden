@@ -101,6 +101,20 @@ dt.TimeIndep[admi2spec>45 , gen_res := NA]
 dt.TimeIndep[admi2spec>45 , RES := NA]
 dt.TimeIndep[admi2spec>45, admi2spec := 45]
 
+# censoring those with specimen data at 45
+dt.TimeIndep[admi2spec==45, inf := 0]
+dt.TimeIndep[admi2spec==45 , HO := NA]
+dt.TimeIndep[admi2spec==45 , COCA := NA]
+dt.TimeIndep[admi2spec==45 , COHA := NA]
+dt.TimeIndep[admi2spec==45 , carb_res := NA]
+dt.TimeIndep[admi2spec==45 , ceph_res := NA]
+dt.TimeIndep[admi2spec==45 , cipro_res := NA]
+dt.TimeIndep[admi2spec==45 , piptaz_res := NA]
+dt.TimeIndep[admi2spec==45 , gen_res := NA]
+dt.TimeIndep[admi2spec==45 , RES := NA]
+dt.TimeIndep[admi2spec==45, admi2spec := 45]
+
+
 dt.TimeIndep[ , los := as.numeric(admi2dis)]
 
 ## flags for if need to use step functions
