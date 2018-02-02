@@ -78,8 +78,6 @@ sqrt(var(boot.CO))
 #### PSUEDO OBSERVATION ANALYSIS
 # based on the etm package closPsuedo function
 
-## load subample with  200,000 controls (and all cases) - dt.sub
-# get jut infected cases- dt.TimeDep.Inf
 
 tra <- matrix(FALSE, 3,3, dimnames = list(as.character(0:2),
                                           as.character(0:2)))
