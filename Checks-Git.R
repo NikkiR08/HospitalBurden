@@ -164,24 +164,10 @@ x1 <- (coxph(Surv(tstart,tstop,dead)~ cluster(ID) +
  BIC(x1)
 ## etc. same done for other variables of interest
  ## and also performed for "deadordischarged" models
+ 
+ ## also performed on combinations of variables and interaction terms
 
 #### SCHOENFELD RESIDUALS FOR COX 
- 
-#with infection
- ## Death
- m.death <- (coxph(Surv(tstart,tstop,dead)~ cluster(ID) + inf +
-                           center.age + center.elix +
-                           center.age:center.elix + Orgtyp2+ sex_dummy, data=dt.sub))
-
-  summary(m.death)
-  BIC(m.death)
-  
-  zph.inf <- cox.zph(m.death)
-  plot(zph.inf)
-  
-  #without dots
-  plot(zph.inf, resid=FALSE, ylim=c(-2,2))
-  
 
 ## Discharged
   m.DOD <- (coxph(Surv(tstart,tstop,deadordischarged)~ cluster(ID) + inf +

@@ -101,6 +101,7 @@ dt.TimeIndep[admi2spec>45 , gen_res := NA]
 dt.TimeIndep[admi2spec>45 , RES := NA]
 dt.TimeIndep[admi2spec>45, admi2spec := 45]
 
+
 # censoring those with specimen data at 45
 dt.TimeIndep[admi2spec==45, inf := 0]
 dt.TimeIndep[admi2spec==45 , HO := NA]
@@ -114,24 +115,20 @@ dt.TimeIndep[admi2spec==45 , gen_res := NA]
 dt.TimeIndep[admi2spec==45 , RES := NA]
 dt.TimeIndep[admi2spec==45, admi2spec := 45]
 
-
 dt.TimeIndep[ , los := as.numeric(admi2dis)]
 
+
 ## flags for if need to use step functions
-# this is to be determined by your own analysis
-## for death models
-dt.TimeIndep[ , flag.Step.Dis := NA_character_]
-dt.TimeIndep[admi2dis==8, flag.Step.Dis := "dis8"]
-dt.TimeIndep[admi2dis<8, flag.Step.Dis := "disless8"]
-dt.TimeIndep[admi2dis>8, flag.Step.Dis := "disgreat8"]
+## for deadordischarged models, tgroup cut-off = 2 
+dt.TimeIndep[ , flag.Step.Dis2 := NA_character_]
+dt.TimeIndep[admi2dis==2, flag.Step.Dis2 := "dis2"]
+dt.TimeIndep[admi2dis<2, flag.Step.Dis2 := "disless2"]
+dt.TimeIndep[admi2dis>2, flag.Step.Dis2 := "disgreat2"]
 
-dt.TimeIndep[ , flag.Step.Spec := NA_character_]
-dt.TimeIndep[admi2spec==8, flag.Step.Spec := "spec8"]
-dt.TimeIndep[admi2spec<8, flag.Step.Spec := "specless8"]
-dt.TimeIndep[admi2spec>8, flag.Step.Spec := "specgreat8"]
-
-## for deadordischarged models
-# a similar process is performed but relating to t=2 (not t=8)
+dt.TimeIndep[ , flag.Step.Spec2 := NA_character_]
+dt.TimeIndep[admi2spec==2, flag.Step.Spec2 := "spec2"]
+dt.TimeIndep[admi2spec<2, flag.Step.Spec2 := "specless2"]
+dt.TimeIndep[admi2spec>2, flag.Step.Spec2 := "specgreat2"]
 
 ### grouping non-tested and susceptible, and having non-inf controls = 0
 dt.TimeIndep[ , ceph_res2 := 0]
